@@ -1,0 +1,25 @@
+{
+  "name": "electron-lastest",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node build.js",
+    "package": "asar pack Package.maker-win32-ia32/resources/app Package.maker-win32-ia32/resources/electron.asar && rm -rf Package.maker-win32-ia32/resources/app",
+    "unpack": "asar extract Package.maker-win32-ia32/resources/electron.asar ff",
+    "pack": "asar pack ff 22.asar"
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-prebuilt": "1.4.4"
+  },
+  "dependencies": {
+    "easy-zip-archiver": "^0.0.3",
+    "electron-packager": "^8.7.0",
+    "gulp": "^3.9.1",
+    "original-fs-asar": "^0.12.7",
+    "path": "^0.12.7",
+    "stream-copy-dir": "^1.0.0"
+  }
+}

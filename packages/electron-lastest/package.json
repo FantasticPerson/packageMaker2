@@ -1,0 +1,22 @@
+{
+  "name": "win7",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . win7 --ignore=node_modules --platform=win32 --arch=ia32",
+    "package": "asar pack win7-win32-ia32/resources/app win7-win32-ia32/resources/electron.asar && rm -rf win7-win32-ia32/resources/app",
+    "unpack": "asar extract win7-win32-ia32/resources/electron.asar win7-win32-ia32/resources/electron.folder"
+  },
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-prebuilt": "1.4.4"
+  },
+  "dependencies": {
+    "asar": "^0.12.3",
+    "electron-packager": "^8.7.0",
+    "gulp": "^3.9.1",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>True.Packager</title>
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <script src="assets/js/jquery-3.1.1.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            #container{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .platform{
+                width: 600px;
+                height: 400px;
+                padding: 10px;
+                border: 2px solid #cccccc;
+                margin: 20px;
+                margin-right: auto;
+                margin-left: auto;
+            }
+            h5{
+                margin: 5px;
+            }
+            body{
+                margin: 0;
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Chrome/Safari/Opera */
+                -khtml-user-select: none; /* Konqueror */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE/Edge */
+                user-select: none;
+            }
+            .headerContainer{
+                background-image: url(assets/fcb3879e14429d75833a461572e64.jpg);
+                background-repeat: no-repeat;
+                background-position: center 20%;
+                -webkit-background-size: cover;
+                background-size: cover;
+                width: 100%;
+                /*height: 160px;*/
+                /*display: flex;*/
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .titleName{
+                font-size: 40px;
+                color: #FFFFFF;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+                /*font-style:*/
+                font-weight: bolder;
+            }
+            .innerContainer{
+                width: 100%;
+                height: 80%;
+                background-color: #eeeeee;
+            }
+            .myCheckBox{
+                background-color: #FFFFFF;
+                color: #555555;
+                background-image: none;
+                border:1px solid #cccccc;
+                border-radius: 4px;
+                width: 20px;
+                height: 20px;
+            }
+            .checkBox-text{
+                display: inline;
+                color: #555;
+                font-size: 20px;
+            }
+            .mySelect{
+                width: 90px;
+                margin-top: 18px;
+            }
+            h2{
+                width: 300px;
+            }
+            .myInputText{
+                width: 200px;
+                margin-top: 18px;
+            }
+            .inputContainer{
+                display: flex;
+                flex-direction: row;
+            }
+            .pathSelectbtn{
+                height: 34px;
+                margin-top: 18px;
+                border-left: 0;
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+                line-height: 16px;
+            }
+            .pluginCheckBoxContainer{
+                margin-top: 22px;
+            }
+            .generate{
+                margin-top: 40px;
+               text-align: center;
+            }
+            #progressInfo{
+                width: 200px;
+                font-size: 20px;
+                margin-top: 8px;
+                color: #555;
+            }
+            .pathInputText{
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+            }
+            .logo{
+                width: 80px;
+                margin: 20px auto 0;
+            }
+            .logo img{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="headerContainer">
+                <div class="logo">
+                    <img src="assets/true.png">
+                </div>
+                <div class="titleName">True Packager</div>
+            </div>
+            <div class="innerContainer">
+                <div class="platformContainer">
+                    <div class="form-horizontal" style="margin: 50px auto; width: 50%;">
+                        <div class="form-group">
+                            <label for="input_text_1" class="col-sm-2 control-label">应用名称：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="input_text_1" placeholder="请输入应用名称">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_text_2" class="col-sm-2 control-label">项目地址：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="input_text_2" placeholder="请输入项目地址">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_text_2" class="col-sm-2 control-label">系统平台：</label>
+                            <div class="col-sm-10">
+                                <select name="select" class="form-control" id="select_k1" >
+                                    <option value="win7+">win 7+</option>
+                                    <option value="xp">win xp</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_text_2" class="col-sm-2 control-label">插件类型：</label>
+                            <div class="col-sm-10">
+                                <select name="select" class="form-control" id="select_k2">
+                                    <option value="ppapi">ppapi</option>
+                                    <option value="npapi">npapi</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_text_2" class="col-sm-2 control-label">保存路径：</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="pathSelected" style="width: 80%; display: inline-block;">
+                                <button onclick="getPath()" class="btn btn-default" style="width: 15%;">选择</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_text_2" class="col-sm-2 control-label">选择插件：</label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    <label style="margin-right: 20px;">
+                                        <input type="checkbox" id="plugin_1" > Flash
+                                    </label>
+
+                                    <label style="margin-right: 20px;">
+                                        <input type="checkbox" id="plugin_2"> FingerPrint
+                                    </label>
+
+                                    <label style="margin-right: 20px;">
+                                        <input type="checkbox" id="plugin_3"> 工作流插件
+                                    </label>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="generate">
+                            <button id="generateBtn" class="btn btn-success btn-lg" onclick="generate()">生 成</button>
+                            <div id="progressInfo"></div>
+                        </div>
+
+
+                    </div>
+
+
+<!--
+                    <div class="platform">
+                        <div class="inputContainer">
+                            <h2>1、输入应用名称：</h2>
+                            <input type="text" class="form-control myInputText" id="input_text_1"/>
+                        </div>
+                        <div class="inputContainer">
+                            <h2>2、输入URL：</h2>
+                            <input type="text" class="form-control myInputText" id="input_text_2"/>
+                        </div>
+                        <div  class="inputContainer">
+                            <h2>3、选择平台：</h2>
+                            <select name="select" class="form-control mySelect" id="select_k1" class="xla_k">
+                                <option value="win7+">win7+</option>
+                                <option value="xp">xp</option>
+                            </select>
+                        </div>
+                        <div  class="inputContainer">
+                            <h2>4、插件格式：</h2>
+                            <select name="select" class="form-control mySelect" id="select_k2" class="xla_k">
+                                <option value="ppapi">ppapi</option>
+                                <option value="npapi">npapi</option>
+                            </select>
+                        </div>
+                        <div class="inputContainer">
+                            <h2>5、选择保存路径:</h2>
+                            <input type="text" class="form-control  myInputText pathInputText" id="pathSelected">
+                            <button onclick="getPath()" class="btn btn-default btn-lg pathSelectbtn">选择</button>
+                        </div>
+                        <div class="inputContainer">
+                            <h2>6、选择插件：</h2>
+                            <div class="pluginCheckBoxContainer">
+                                <input type="checkbox" id="plugin_1" class="input_text myCheckBox"/>
+                                <div class="checkBox-text">flash</div>
+                                <input type="checkbox" id="plugin_2" class="input_text myCheckBox"/>
+                                <div class="checkBox-text">fingerPrint</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="generate">
+                        <button id="generateBtn" class="btn btn-primary btn-lg" onclick="generate()">生成</button>
+                        <div id="progressInfo"></div>
+                    </div>
+
+-->
+                </div>
+                
+            </div>
+        </div>
+        <script>
+            var pathSelected;
+            function getPath(){
+                var select_k1 = document.getElementById('pathSelected');
+                const {dialog} = require('electron').remote;
+                dialog.showOpenDialog({properties: ['openDirectory']},function(path){
+                    pathSelected = select_k1.value = path[0];
+                    console.log(path)
+                });
+            }
+            function getPlatform(){
+                var select_k1 = document.getElementById('select_k1');
+                return select_k1.selectedIndex;
+            }
+            function getPluginType(){
+                var select_k2 = document.getElementById('select_k2');
+                return select_k2.selectedIndex;
+            }
+            function getPluginList(){
+                var list = [];
+                for(var i=0;i<2;i++){
+                    var nodeItem = document.getElementById('plugin_'+(i+1));
+                    if(nodeItem.checked){
+                        list.push(i);
+                    }
+                }
+                return list;
+            }
+            function getUrl() {
+                var node = document.getElementById('input_text_2');
+                return node.value;
+            }
+            function getAppName(){
+                var node = document.getElementById('input_text_1');
+                return node.value;
+            }
+            function generate(){
+                var platformIndex = getPlatform();
+                var pluginType = getPluginType();
+                var pluginList = getPluginList();
+                var appName = getAppName();
+                var url = getUrl();
+
+                var generatePackage = require('./index').generatePackage;
+                if(!url || !appName || !pathSelected){
+                    alert("信息填写不完整");
+                    return;
+                }
+                generatePackage(platformIndex,pluginType,pluginList,appName,url,pathSelected);
+            }
+        </script>
+    </body>
+</html>

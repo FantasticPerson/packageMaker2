@@ -1,0 +1,8 @@
+.idea/
+.DS_Store
+node_modules/
+cache/
+build/
+Package.maker-win32-ia32/
+output/electron-lastest/win7-win32-ia32/
+output/electron-older/win7-win32-ia32/
